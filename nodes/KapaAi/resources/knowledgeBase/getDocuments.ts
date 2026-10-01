@@ -1,7 +1,7 @@
 import type { INodeProperties } from 'n8n-workflow';
 import {
-	bodyPagePagination,
 	commaSeparatedToArray,
+	documentsPagination,
 	limitField,
 	projectIdField,
 	returnAllField,
@@ -9,17 +9,17 @@ import {
 
 const showOnlyForGetDocuments = {
 	operation: ['getDocuments'],
-	resource: ['retrieval'],
+	resource: ['knowledgeBase'],
 };
 
-export const retrievalGetDocumentsDescription: INodeProperties[] = [
+export const knowledgeBaseGetDocumentsDescription: INodeProperties[] = [
 	projectIdField({ show: showOnlyForGetDocuments }),
 	{
 		displayName: 'Fetch By',
 		name: 'fetchBy',
 		type: 'options',
 		default: 'urls',
-		description: 'Whether to look documents up by URL, by document ID, or by both at once',
+		description: 'Look documents up by URL, by document ID, or by both at once',
 		displayOptions: {
 			show: showOnlyForGetDocuments,
 		},
@@ -46,7 +46,7 @@ export const retrievalGetDocumentsDescription: INodeProperties[] = [
 		required: true,
 		placeholder: 'e.g. https://docs.example.com/getting-started',
 		description:
-			'Comma-separated URLs to fetch, matched exactly against the URLs of your ingested sources',
+			'Comma-separated URLs to fetch, matched exactly against the URLs of your ingested sources. Duplicate URLs are ignored.',
 		displayOptions: {
 			show: {
 				...showOnlyForGetDocuments,
@@ -82,11 +82,7 @@ export const retrievalGetDocumentsDescription: INodeProperties[] = [
 			},
 		},
 	},
-	returnAllField(
-		{ show: showOnlyForGetDocuments },
-		// A page holds at most 5 documents, so a larger Limit needs paging either way.
-		{ pagination: bodyPagePagination, alwaysPaginate: true },
-	),
+	returnAllField({ show: showOnlyForGetDocuments }, documentsPagination),
 	limitField({ show: { ...showOnlyForGetDocuments, returnAll: [false] } }),
 	{
 		displayName: 'Options',

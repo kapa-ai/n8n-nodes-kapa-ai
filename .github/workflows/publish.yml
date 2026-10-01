@@ -17,7 +17,7 @@
 #
 # ─── ONE-TIME SETUP ────────────────────────────────────────────────────────────
 #
-# Option A — OIDC Trusted Publishing (recommended, no long-lived secrets):
+# Option A: OIDC Trusted Publishing (recommended, no long-lived secrets):
 #   1. Log in to npmjs.com and open your package's settings.
 #   2. Under "Publish access" → "Trusted Publishers", click "Add a publisher".
 #   3. Select GitHub Actions and fill in:
@@ -26,11 +26,13 @@
 #        Workflow name:    publish.yml
 #        Environment:      (leave blank unless you use GitHub Environments)
 #   4. Leave the NPM_TOKEN secret unset in this repository. GitHub's OIDC
-#      token is used instead — no secret ever touches your repo settings.
+#      token is used instead, so no secret ever touches your repo settings.
 #
-# Option B — npm Automation Token (fallback):
+# Option B: npm Automation Token (fallback):
 #   1. On npmjs.com: Access Tokens → Generate New Token → Granular Access Token.
-#      Scope it to this package with "Read and write" publish permission.
+#      Give it "Read and write" publish permission and enable "Bypass 2FA".
+#      A package that is not on npm yet cannot be selected, so a first-publish
+#      token covers all packages; revoke it once trusted publishing is set up.
 #   2. In GitHub: Settings → Secrets and variables → Actions → New secret.
 #      Name it NPM_TOKEN and paste the token value.
 #
@@ -45,12 +47,12 @@
 #
 # ─── RELEASE PROCESS ───────────────────────────────────────────────────────────
 #
-# Run the following command locally to start an interactive release:
+# Run the following command locally to start a release:
 #
 #   npm run release
 #
-# This will lint, build, prompt for a version bump, update the changelog,
-# commit, tag, and push — which triggers this workflow to publish to npm.
+# This lints, builds, bumps the patch version without prompting, updates the
+# changelog, commits, tags, and pushes, which triggers this workflow to publish.
 
 name: Publish
 
@@ -88,9 +90,9 @@ jobs:
         # Publishes to npm with a provenance attestation (requires id-token: write above).
         # Lint and build run automatically as part of the release process.
         #
-        # Option A (OIDC): leave NPM_TOKEN unset — the token step is skipped and
+        # Option A (OIDC): leave NPM_TOKEN unset; the token step is skipped and
         #   npm uses the OIDC exchange instead.
-        # Option B (token): set NPM_TOKEN in repo secrets — it is written to
+        # Option B (token): set NPM_TOKEN in repo secrets; it is written to
         #   .npmrc here before publishing.
         run: |
           [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"

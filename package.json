@@ -1,55 +1,70 @@
 {
-  "name": "n8n-nodes-kapa-ai",
-  "version": "0.1.0",
-  "description": "n8n community node to work with the Kapa AI API",
-  "license": "MIT",
-  "homepage": "https://github.com/kapa-ai/n8n-nodes-kapa-ai",
-  "keywords": [
-    "n8n-community-node-package",
-    "kapa",
-    "kapa-ai",
-    "rag",
-    "ai",
-    "documentation"
-  ],
-  "author": {
-    "name": "Jon Bennetts",
-    "email": "jonathan@joffcom.net"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kapa-ai/n8n-nodes-kapa-ai.git"
-  },
-  "scripts": {
-    "build": "n8n-node build",
-    "build:watch": "tsc --watch",
-    "n8n": "N8N_USER_FOLDER=\"$HOME/.n8n-node-cli\" N8N_DEV_RELOAD=true N8N_DIAGNOSTICS_ENABLED=false N8N_PERSONALIZATION_ENABLED=false DB_SQLITE_POOL_SIZE=10 npx -y n8n",
-    "dev": "npm run n8n & trap 'kill 0' EXIT INT TERM; n8n-node dev --external-n8n --custom-user-folder \"$HOME/.n8n-node-cli\"",
-    "lint": "n8n-node lint",
-    "lint:fix": "n8n-node lint --fix",
-    "release": "n8n-node release",
-    "prepublishOnly": "n8n-node prerelease"
-  },
-  "files": [
-    "dist"
-  ],
-  "n8n": {
-    "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/KapaAiApi.credentials.js"
-    ],
-    "nodes": [
-      "dist/nodes/KapaAi/KapaAi.node.js"
-    ]
-  },
-  "devDependencies": {
-    "@n8n/node-cli": "^0.46.4",
-    "eslint": "9.39.5",
-    "prettier": "3.6.2",
-    "release-it": "^19.2.4",
-    "typescript": "5.9.3"
-  },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  }
+	"name": "n8n-nodes-kapa-ai",
+	"version": "0.1.0",
+	"description": "n8n community node to work with the Kapa AI API",
+	"license": "MIT",
+	"homepage": "https://docs.kapa.ai/retrieval/n8n-node",
+	"keywords": [
+		"n8n-community-node-package",
+		"kapa",
+		"kapa-ai",
+		"rag",
+		"ai",
+		"documentation",
+		"retrieval",
+		"knowledge-base",
+		"ai-agent",
+		"tool"
+	],
+	"author": {
+		"name": "kapa.ai",
+		"email": "engineering@kapa.ai",
+		"url": "https://www.kapa.ai"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kapa-ai/n8n-nodes-kapa-ai.git"
+	},
+	"bugs": {
+		"url": "https://github.com/kapa-ai/n8n-nodes-kapa-ai/issues"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"n8n": "N8N_USER_FOLDER=\"$HOME/.n8n-node-cli\" N8N_DEV_RELOAD=true N8N_DIAGNOSTICS_ENABLED=false N8N_PERSONALIZATION_ENABLED=false DB_SQLITE_POOL_SIZE=10 npx -y n8n",
+		"dev": "npm run n8n & trap 'kill 0' EXIT INT TERM; n8n-node dev --external-n8n --custom-user-folder \"$HOME/.n8n-node-cli\"",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"test": "vitest run",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": [
+		"dist",
+		"!dist/tsconfig.tsbuildinfo"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/KapaAiApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/KapaAi/KapaAi.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "^0.50.3",
+		"eslint": "9.39.5",
+		"n8n-workflow": "^2.41.1",
+		"prettier": "3.6.2",
+		"release-it": "^19.2.4",
+		"typescript": "5.9.3",
+		"vitest": "^5.0.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
 }

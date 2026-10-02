@@ -3,15 +3,24 @@
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development", "Developer Tools"],
+	"alias": [
+		"RAG",
+		"Retrieval",
+		"Knowledge Base",
+		"Documentation",
+		"Grounding",
+		"Search",
+		"Knowledge Sources"
+	],
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://github.com/kapa-ai/n8n-nodes-kapa-ai?tab=readme-ov-file#credentials"
+				"url": "https://docs.kapa.ai/retrieval/n8n-node/quickstart#create-a-kapa-ai-api-credential"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://github.com/kapa-ai/n8n-nodes-kapa-ai?tab=readme-ov-file"
+				"url": "https://docs.kapa.ai/retrieval/n8n-node"
 			}
 		]
 	}

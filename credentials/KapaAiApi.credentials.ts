@@ -22,7 +22,8 @@ export class KapaAiApi implements ICredentialType {
 		dark: 'file:../nodes/KapaAi/kapaAi.dark.svg',
 	};
 
-	documentationUrl = 'https://github.com/kapa-ai/n8n-nodes-kapa-ai?tab=readme-ov-file#credentials';
+	documentationUrl =
+		'https://docs.kapa.ai/retrieval/n8n-node/quickstart#create-a-kapa-ai-api-credential';
 
 	properties: INodeProperties[] = [
 		{

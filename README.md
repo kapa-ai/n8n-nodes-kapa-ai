@@ -72,6 +72,10 @@ The node looks up every URL and ID you list and returns each document it finds, 
 
 ## Version history
 
+### 0.1.1
+
+Passes the n8n community package scanner: a supported node category and a static subtitle expression.
+
 ### 0.1.0
 
 Initial release with the Knowledge Base resource: Search and Get Many Documents.

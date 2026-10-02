@@ -46,7 +46,7 @@ export const knowledgeBaseGetDocumentsDescription: INodeProperties[] = [
 		required: true,
 		placeholder: 'e.g. https://docs.example.com/getting-started',
 		description:
-			'Comma-separated URLs to fetch, matched exactly against the URLs of your ingested sources. Duplicate URLs are ignored.',
+			'Comma-separated URLs to fetch. Each must exactly match a URL in your knowledge sources. Duplicates are ignored.',
 		displayOptions: {
 			show: {
 				...showOnlyForGetDocuments,
@@ -67,7 +67,7 @@ export const knowledgeBaseGetDocumentsDescription: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		required: true,
-		description: 'Comma-separated document IDs to fetch. Duplicate IDs are ignored.',
+		description: 'Comma-separated document IDs to fetch. Duplicates are ignored.',
 		displayOptions: {
 			show: {
 				...showOnlyForGetDocuments,
@@ -104,7 +104,7 @@ export const knowledgeBaseGetDocumentsDescription: INodeProperties[] = [
 					maxValue: 200000,
 				},
 				description:
-					'Maximum number of characters returned per document. Longer documents are truncated and flagged.',
+					'Maximum length of each document in characters. Longer documents are cut at this limit and flagged.',
 				routing: {
 					send: {
 						type: 'body',

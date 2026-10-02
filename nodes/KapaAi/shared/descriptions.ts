@@ -17,12 +17,16 @@ export const commaSeparatedToArray =
  * found documents in `total_items`, so the requested list, not `total_items`, decides when paging
  * is done. IDs are UUIDs, which Kapa compares case-insensitively.
  */
+const distinctRequestedUrls = '($request.body.urls ?? []).unique().length';
+const distinctRequestedIds =
+	'($request.body.document_ids ?? []).map((id) => id.toLowerCase()).unique().length';
+const pagedSoFar = '$response.body.page * $response.body.page_size';
+
 export const documentsPagination: IN8nRequestOperations = {
 	pagination: {
 		type: 'generic',
 		properties: {
-			continue:
-				'={{ (() => { const distinct = (values) => values.filter((value, index) => values.indexOf(value) === index).length; const requested = distinct($request.body?.urls ?? []) + distinct(($request.body?.document_ids ?? []).map((id) => id.toLowerCase())); return !!$response?.body && $response.body.page * $response.body.page_size < requested; })() }}',
+			continue: `={{ !!$response?.body && ${pagedSoFar} < ${distinctRequestedUrls} + ${distinctRequestedIds} }}`,
 			request: {
 				body: '={{ ({ ...$request.body, page: ($response?.body?.page ?? 0) + 1 }) }}' as unknown as IDataObject,
 			},

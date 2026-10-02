@@ -18,7 +18,7 @@ export const knowledgeBaseSearchDescription: INodeProperties[] = [
 			rows: 3,
 		},
 		placeholder: 'e.g. How do I authenticate against the API?',
-		description: 'A single, well-formed natural-language query. Must be a complete sentence.',
+		description: 'A single question or request, written as a complete sentence',
 		displayOptions: {
 			show: showOnlyForSearch,
 		},
@@ -35,7 +35,7 @@ export const knowledgeBaseSearchDescription: INodeProperties[] = [
 		type: 'options',
 		default: 'default',
 		description:
-			'Default is faster and returns a fixed number of chunks. Deep has higher recall and precision, returns fewer chunks, and takes longer. Top K and Max Characters are ceilings that Deep rarely reaches.',
+			'Default is faster and returns a fixed number of search results. Deep takes longer, reads further into your sources, and returns only what it finds relevant, usually fewer results.',
 		displayOptions: {
 			show: showOnlyForSearch,
 		},
@@ -73,7 +73,7 @@ export const knowledgeBaseSearchDescription: INodeProperties[] = [
 				default: {},
 				placeholder: 'Add end user',
 				description:
-					'Who the query is asked for, recorded in Kapa analytics when Email or Unique Client ID is set. Does not change which chunks are returned.',
+					'Who is asking, recorded in Kapa analytics when Email or Unique Client ID is set. Does not affect the results.',
 				options: [
 					{
 						displayName: 'End User',
@@ -142,7 +142,7 @@ export const knowledgeBaseSearchDescription: INodeProperties[] = [
 								type: 'string',
 								default: '',
 								description:
-									'Stable identifier for the asking user, for example a browser fingerprint or your own user ID',
+									'An ID that stays the same for this user across queries, for example your own user ID',
 								routing: {
 									send: {
 										type: 'body',
@@ -161,7 +161,7 @@ export const knowledgeBaseSearchDescription: INodeProperties[] = [
 				type: 'string',
 				default: '',
 				description:
-					'Integration to attribute the query to in Kapa analytics. Does not change which chunks are returned.',
+					'Integration to attribute the query to in Kapa analytics. Does not affect the results.',
 				routing: {
 					send: {
 						type: 'body',
@@ -180,7 +180,7 @@ export const knowledgeBaseSearchDescription: INodeProperties[] = [
 					maxValue: 60000,
 				},
 				description:
-					'The maximum number of characters across all returned chunks. Chunks are included in order of relevance until the next one would exceed the limit, and are never truncated.',
+					'Maximum total length of the search results in characters. Results are added best match first until the next one would go over the limit. No result is cut short.',
 				routing: {
 					send: {
 						type: 'body',
@@ -193,8 +193,7 @@ export const knowledgeBaseSearchDescription: INodeProperties[] = [
 				name: 'redactQuery',
 				type: 'boolean',
 				default: false,
-				description:
-					'Whether to store the query as redacted in Kapa analytics. Does not change which chunks are returned.',
+				description: 'Whether to redact the query in Kapa analytics. Does not affect the results.',
 				routing: {
 					send: {
 						type: 'body',
@@ -225,7 +224,7 @@ export const knowledgeBaseSearchDescription: INodeProperties[] = [
 					minValue: 1,
 					maxValue: 15,
 				},
-				description: 'The maximum number of chunks to return',
+				description: 'Maximum number of search results to return. Deep mode usually returns fewer.',
 				routing: {
 					send: {
 						type: 'body',

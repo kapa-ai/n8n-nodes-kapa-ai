@@ -1,8 +1,8 @@
 # n8n-nodes-kapa-ai
 
-This is an n8n community node. It lets you ground n8n AI agents and workflows in a [kapa.ai](https://www.kapa.ai/) knowledge base.
+This is an n8n community node. It lets n8n AI agents and workflows search a [kapa.ai](https://www.kapa.ai/) knowledge base.
 
-kapa.ai indexes your documentation, support tickets and other knowledge sources into one searchable knowledge base and keeps it in sync. This node searches that knowledge base, so an agent can answer from your sources without you building a vector store, embeddings or a chunking pipeline.
+kapa.ai makes your documentation, support tickets and other knowledge sources ready to search and keeps them up to date. This node searches them, so an agent can answer based on your knowledge sources without a vector store of your own.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
@@ -24,8 +24,8 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 | -------------- | -------------------------- |
 | Knowledge Base | Search, Get Many Documents |
 
-- **Search** returns the chunks of your knowledge sources most relevant to a query, each with its `source_url` and `content`, without generating an answer.
-- **Get Many Documents** returns the full markdown of ingested documents by their exact URL or document ID.
+- **Search** finds relevant information in your knowledge sources. Each result includes the relevant text in Markdown and a link to the original source. It does not write an answer.
+- **Get Many Documents** returns whole documents from your knowledge sources, as Markdown, by their exact URL or document ID.
 
 ## Credentials
 
@@ -44,7 +44,7 @@ Requires n8n 2.9.0 or later. Verified against n8n 2.41.5.
 
 ## Usage
 
-### Ground an AI Agent in your knowledge base
+### Give an AI Agent access to your knowledge base
 
 The node is available as a tool, so an **AI Agent** can call it directly.
 
@@ -52,17 +52,17 @@ The node is available as a tool, so an **AI Agent** can call it directly.
 2. On the agent's **Tool** connector, add **Kapa AI → Search** and set your **Project ID**.
 3. Set **Query** to let the model fill it in, with `{{ $fromAI('query', 'A single, well-formed natural-language query. Must be a complete sentence.') }}`.
 
-The agent decides when to search your knowledge base, then writes its own answer from the chunks it gets back. That keeps your own prompt, model and output format, and skips a second model call.
+The agent decides when to search and writes an answer based on the information found. You keep your own prompt, model and output format.
 
-**Choosing a mode.** **Mode** set to `Default` is faster and returns a fixed number of chunks ranked by relevance. `Deep` has higher recall and precision, returns fewer chunks, and takes longer. **Top K** and **Max Characters** cap what comes back in either mode, and `Deep` rarely reaches them.
+**Choosing a mode.** **Mode** set to `Default` is faster and returns a fixed number of search results, best match first. `Deep` takes longer, reads further into your sources, and returns only what it finds relevant, usually fewer results. **Top K** caps how many results come back and **Max Characters** caps their total length.
 
-**Narrowing the search.** **Options → Source Group IDs** restricts retrieval to the source groups you list, for example only your public documentation.
+**Narrowing the search.** **Options → Source Group IDs** restricts the search to the source groups you list, for example only your public documentation.
 
 ### Fetch whole documents
 
-When a chunk is not enough, **Knowledge Base → Get Many Documents** returns the full markdown of the documents behind it. Use **Fetch By** to look documents up by URL, by document ID, or by both; whichever field you select has to be filled in. Enter several values separated by commas.
+When a search result is not enough, **Knowledge Base → Get Many Documents** returns the whole document behind it, as Markdown. Use **Fetch By** to look documents up by URL, by document ID, or by both; whichever field you select has to be filled in. Enter several values separated by commas.
 
-With **Return All** on, or a **Limit** above one page, the node pages through every URL and ID you requested and returns each document it finds. A URL or ID that matches nothing is left out rather than returned empty, and duplicates are ignored. Documents longer than **Options → Max Characters per Document** are truncated and flagged.
+The node looks up every URL and ID you list and returns each document it finds, up to **Limit** unless **Return All** is on. Entries that match nothing are left out, and duplicates are ignored. Documents longer than **Options → Max Characters per Document** are cut at that limit and flagged.
 
 ## Resources
 

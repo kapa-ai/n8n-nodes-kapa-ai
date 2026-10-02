@@ -12,7 +12,7 @@ const operations: INodePropertyOptions[] = [
 		value: 'getDocuments',
 		action: 'Get many documents',
 		description:
-			'Fetch full documents by their exact source URL or document ID, with their content in Markdown. The results are paginated, long documents are truncated, and the results may be empty when nothing matches exactly. Use it to look up specific documents rather than to search.',
+			'Fetch whole documents by their exact source URL or document ID, as Markdown. Entries that match nothing are left out. Use it to look up known documents rather than to search.',
 		routing: {
 			request: {
 				method: 'POST',
@@ -35,7 +35,7 @@ const operations: INodePropertyOptions[] = [
 		value: 'search',
 		action: 'Search the knowledge base',
 		description:
-			'Return the chunks most relevant to the query, in descending order of relevance, and a fixed number of them in the default mode. Each chunk is a short, self-contained snippet of text from a single page or item, with its source URL and Markdown content. When the knowledge sources hold nothing relevant to the query, the chunks may be unrelated.',
+			'Find relevant information in your knowledge sources. Each search result includes the relevant text in Markdown and a link to the original source, best match first. When your sources hold nothing relevant, the results may be unrelated.',
 		routing: {
 			request: {
 				method: 'POST',

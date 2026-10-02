@@ -10,7 +10,7 @@ export class KapaAi implements INodeType {
 		group: ['transform'],
 		version: 1,
 		subtitle: knowledgeBaseSubtitle,
-		description: 'Ground AI agents in your Kapa knowledge base with agentic retrieval',
+		description: 'Search your Kapa knowledge base from AI agents and workflows',
 		defaults: {
 			name: 'Kapa AI',
 		},

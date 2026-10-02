@@ -15,7 +15,7 @@
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://docs.kapa.ai/retrieval/guides/set-up-n8n-node#create-a-kapa-ai-api-credential"
+				"url": "https://docs.kapa.ai/retrieval/n8n-node/quickstart#create-a-kapa-ai-api-credential"
 			}
 		],
 		"primaryDocumentation": [

@@ -23,7 +23,7 @@ export class KapaAiApi implements ICredentialType {
 	};
 
 	documentationUrl =
-		'https://docs.kapa.ai/retrieval/guides/set-up-n8n-node#create-a-kapa-ai-api-credential';
+		'https://docs.kapa.ai/retrieval/n8n-node/quickstart#create-a-kapa-ai-api-credential';
 
 	properties: INodeProperties[] = [
 		{

@@ -16,7 +16,7 @@ import {
 const node: INode = {
 	id: '1',
 	name: 'Kapa AI',
-	type: 'n8n-nodes-kapa-ai.kapaAi',
+	type: '@kapaai/n8n-nodes-kapa-ai.kapaAi',
 	typeVersion: 1,
 	position: [0, 0],
 	parameters: {},

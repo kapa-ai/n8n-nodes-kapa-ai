@@ -1,4 +1,4 @@
-# n8n-nodes-kapa-ai
+# @kapaai/n8n-nodes-kapa-ai
 
 This is an n8n community node. It lets n8n AI agents and workflows search a [kapa.ai](https://www.kapa.ai/) knowledge base.
 
@@ -16,7 +16,7 @@ kapa.ai makes your documentation, support tickets and other knowledge sources re
 
 ## Installation
 
-Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation, using the package name `n8n-nodes-kapa-ai`. The [quickstart](https://docs.kapa.ai/retrieval/n8n-node/quickstart) on docs.kapa.ai walks through installation, the credential and a first run.
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation, using the package name `@kapaai/n8n-nodes-kapa-ai`. The [quickstart](https://docs.kapa.ai/retrieval/n8n-node/quickstart) on docs.kapa.ai walks through installation, the credential and a first run.
 
 ## Operations
 

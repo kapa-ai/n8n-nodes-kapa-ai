@@ -45,10 +45,6 @@ const operations: INodePropertyOptions[] = [
 	},
 ];
 
-const operationNames = Object.fromEntries(operations.map(({ value, name }) => [value, name]));
-
-export const knowledgeBaseSubtitle = `={{ (${JSON.stringify(operationNames)})[$parameter.operation] }}`;
-
 export const knowledgeBaseDescription: INodeProperties[] = [
 	{
 		displayName: 'Operation',

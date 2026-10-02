@@ -2,7 +2,7 @@
 	"node": "@kapaai/n8n-nodes-kapa-ai",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
-	"categories": ["Development", "Developer Tools"],
+	"categories": ["Development"],
 	"alias": [
 		"RAG",
 		"Retrieval",

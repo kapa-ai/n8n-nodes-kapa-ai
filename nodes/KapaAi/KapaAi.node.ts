@@ -1,15 +1,15 @@
 import { NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
-import { knowledgeBaseDescription, knowledgeBaseSubtitle } from './resources/knowledgeBase';
+import { knowledgeBaseDescription } from './resources/knowledgeBase';
 
 export class KapaAi implements INodeType {
-	// eslint-disable-next-line n8n-nodes-base/node-class-description-missing-subtitle -- the rule only recognizes a string literal subtitle
 	description: INodeTypeDescription = {
 		displayName: 'Kapa AI',
 		name: 'kapaAi',
 		icon: { light: 'file:kapaAi.svg', dark: 'file:kapaAi.dark.svg' },
 		group: ['transform'],
 		version: 1,
-		subtitle: knowledgeBaseSubtitle,
+		subtitle:
+			'={{ ({ getDocuments: "Get Many Documents", search: "Search" })[$parameter.operation] }}',
 		description: 'Search your Kapa knowledge base from AI agents and workflows',
 		defaults: {
 			name: 'Kapa AI',

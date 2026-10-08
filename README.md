@@ -16,7 +16,7 @@ kapa.ai makes your documentation, support tickets and other knowledge sources re
 
 ## Installation
 
-Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation, using the package name `@kapaai/n8n-nodes-kapa-ai`. The [quickstart](https://docs.kapa.ai/retrieval/n8n-node/quickstart) on docs.kapa.ai walks through installation, the credential and a first run.
+On n8n Cloud or a self-hosted instance, follow the [verified community node installation guide](https://docs.n8n.io/integrations/community-nodes/installation-and-management/install-verified-community-nodes) and search for **Kapa AI** in the nodes panel. The [n8n agent example](https://docs.kapa.ai/examples/give-your-n8n-agent-access-to-your-knowledge-without-a-rag-pipeline) on docs.kapa.ai walks through installation, the credential and a first run.
 
 ## Operations
 
@@ -66,11 +66,15 @@ The node looks up every URL and ID you list and returns each document it finds, 
 
 ## Resources
 
-- [kapa.ai n8n node documentation](https://docs.kapa.ai/retrieval/n8n-node)
+- [kapa.ai n8n node documentation](https://docs.kapa.ai/retrieval/frameworks/n8n)
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
 - [kapa.ai API reference](https://docs.kapa.ai/api/reference)
 
 ## Version history
+
+### 0.1.2
+
+Corrects the node identifier in the discovery metadata and points documentation links to the Framework integrations section.
 
 ### 0.1.1
 

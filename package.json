@@ -1,9 +1,9 @@
 {
 	"name": "@kapaai/n8n-nodes-kapa-ai",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "n8n community node to work with the Kapa AI API",
 	"license": "MIT",
-	"homepage": "https://docs.kapa.ai/retrieval/n8n-node",
+	"homepage": "https://docs.kapa.ai/retrieval/frameworks/n8n",
 	"keywords": [
 		"n8n-community-node-package",
 		"kapa",

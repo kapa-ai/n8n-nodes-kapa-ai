@@ -62,7 +62,7 @@ The node lets you set the same options as the Retrieval endpoint. See the [Retri
 
 This operation:
 
-- Fetches full documents from your knowledge sources by their source URL or document ID. Links returned by **Search** work as they are, including the part after `#`. **Fetch By** selects URLs, document IDs, or both; enter several values separated by commas.
+- Fetches full documents from your knowledge sources by their source URL or document ID. Links returned by **Search** work as they are. **Fetch By** selects URLs, document IDs, or both; enter several values separated by commas.
 - Returns the full content of each matched document in Markdown; source URLs or document IDs that match nothing are omitted, so results may be empty.
 - Limits the number of results with **Limit**, unless **Return All** is on, and truncates documents longer than **Max Characters per Document**.
 - Is meant for looking up the content of one or more specific documents, for example when the agent needs the complete page rather than the short chunks **Search** returns.

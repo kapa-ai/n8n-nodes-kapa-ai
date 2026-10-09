@@ -46,7 +46,7 @@ export const knowledgeBaseGetDocumentsDescription: INodeProperties[] = [
 		required: true,
 		placeholder: 'e.g. https://docs.example.com/getting-started',
 		description:
-			'Comma-separated URLs to fetch. Links returned by Search work as they are, including the part after #. Duplicates are ignored.',
+			'Comma-separated URLs to fetch. Links returned by Search work as they are. Duplicates are ignored.',
 		displayOptions: {
 			show: {
 				...showOnlyForGetDocuments,

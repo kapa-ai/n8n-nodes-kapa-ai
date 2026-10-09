@@ -14,7 +14,7 @@ export const commaSeparatedToArray =
 
 /**
  * Kapa pages over the distinct requested URLs and document IDs, omits misses and counts only
- * found documents in `total_items`, so the requested list, not `total_items`, decides when paging
+ * matched requests in `total_items`, so the requested list, not `total_items`, decides when paging
  * is done. IDs are UUIDs, which Kapa compares case-insensitively.
  */
 const distinctRequestedUrls = '($request.body.urls ?? []).unique().length';

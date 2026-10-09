@@ -106,6 +106,15 @@ describe('documentsPagination', () => {
 		).toBe(false);
 	});
 
+	it('counts URLs that differ only after # separately', () => {
+		expect(
+			shouldContinue(
+				{ urls: ['a#1', 'a#2', 'b', 'c', 'd', 'e'] },
+				{ page: 1, page_size: 5, total_items: 5 },
+			),
+		).toBe(true);
+	});
+
 	it('counts IDs that differ only by case once', () => {
 		expect(
 			shouldContinue(

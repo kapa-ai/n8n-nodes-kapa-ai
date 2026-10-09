@@ -12,7 +12,7 @@ const operations: INodePropertyOptions[] = [
 		value: 'getDocuments',
 		action: 'Get many documents',
 		description:
-			'Fetch whole documents by their exact source URL or document ID, as Markdown. Entries that match nothing are left out. Use it to look up known documents rather than to search.',
+			'Fetch whole documents by their source URL or document ID, as Markdown. Links from Search work as they are. Entries that match nothing are left out. Use it to look up known documents rather than to search.',
 		routing: {
 			request: {
 				method: 'POST',
